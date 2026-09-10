@@ -1,203 +1,417 @@
-# Superstore SQL Analysis
+# 📊 Superstore Sales Analysis — Power BI Dashboard
 
-## 📊 Project Overview
+## 📌 Project Overview
 
-This project analyzes an e-commerce Superstore dataset using **PostgreSQL and SQL**.
+This project analyzes the **Superstore sales dataset** to understand overall business performance, sales trends, profitability, product performance, regional performance, customer segments, and shipping methods.
 
-The objective is to explore sales, profit, customers, products, regions, categories, discounts, and shipping performance and generate meaningful business insights from the data.
-
----
-
-## 🛠️ Tools & Technologies
-
-* PostgreSQL
-* pgAdmin 4
-* SQL
-* Superstore Dataset
+The project combines **SQL analysis and Power BI visualization** to transform raw sales data into meaningful business insights through an interactive dashboard.
 
 ---
 
-## 📁 Dataset
+## 🎯 Business Problem
 
-The dataset contains **21,520 records** and includes information about:
+A retail business needs to understand:
+
+* How much revenue is being generated?
+* Which products and categories perform best?
+* Which regions generate the most sales and profit?
+* Which customer segments contribute the most revenue?
+* Which shipping methods are most commonly used?
+* Where are opportunities to improve profitability?
+
+This project addresses these questions using data analysis and interactive Power BI dashboards.
+
+---
+
+## 🎯 Project Objectives
+
+* Analyze overall sales and profitability
+* Identify high-performing products
+* Compare category and sub-category performance
+* Analyze regional and state-level performance
+* Understand customer segment contribution
+* Evaluate shipping method performance
+* Track key business KPIs
+* Build an interactive Power BI dashboard
+* Generate actionable business insights
+
+---
+
+## 🗂️ Dataset
+
+**Dataset:** Superstore Sales Dataset
+
+The dataset contains information about:
 
 * Orders
 * Customers
 * Products
 * Categories
+* Regions
+* States
 * Sales
 * Quantity
-* Discount
+* Discounts
 * Profit
-* Regions
-* Shipping
+* Shipping methods
 
-### Date Range
+### Main Columns
 
-* Order Date: January 2014 – December 2017
-* Ship Date: January 2014 – January 2018
+``text
+Row ID
+Order ID
+Order Date
+Ship Date
+Ship Mode
+Customer ID
+Customer Name
+Segment
+Country
+City
+State
+Postal Code
+Region
+Product ID
+Category
+Sub-Category
+Product Name
+Sales
+Quantity
+Discount
+Profit
+```
 
----
 
-## 🧹 Data Quality Checks
 
-Before performing the analysis, the dataset was checked for data-quality issues.
+## 🛠️ Tools & Technologies
 
-The following checks were performed:
-
-* NULL value check
-* Duplicate record check
-* Minimum and maximum value checks
-* Date-range validation
-* Sales validation
-* Quantity validation
-* Discount validation
-* Profit validation
-
-### Data Quality Results
-
-* NULL values: **0**
-* Duplicate records: **0**
-* Sales range: **$0.44 – $22,638.48**
-* Quantity range: **1 – 14**
-* Discount range: **0% – 80%**
-* Profit range: **-$6,599.98 – $8,399.98**
-
----
-
-## 📈 Key Performance Indicators
-
-The following business KPIs were calculated using SQL:
-
-| KPI           |         Value |
-| ------------- | ------------: |
-| Total Sales   | $2,297,201.07 |
-| Total Profit  |   $286,397.79 |
-| Total Orders  |         5,009 |
-| Profit Margin |        12.47% |
+| Tool       | Purpose                                   |
+| ---------- | ----------------------------------------- |
+| PostgreSQL | Data storage and SQL analysis             |
+| SQL        | Data analysis and business queries        |
+| Power BI   | Dashboard and visualization               |
+| DAX        | KPI and calculated measures               |
+| Excel      | Data inspection and preparation           |
+| GitHub     | Project documentation and version control |
 
 ---
 
-## 🔍 Analysis Performed
-
-### Regional Analysis
-
-Analyzed:
-
-* Orders by region
-* Sales by region
-* Profit by region
-* Profit margin by region
-
-### Product Analysis
-
-Analyzed:
-
-* Top products by sales
-* Top products by profit
-* Low-profit products
-* Product profitability
-
-### Category Analysis
-
-Analyzed:
-
-* Sales by category
-* Profit by category
-* Category profitability
-
-### Customer Analysis
-
-Analyzed:
-
-* Customer sales
-* Customer profitability
-* Customer order activity
-
-### Shipping Analysis
-
-Analyzed:
-
-* Orders by shipping mode
-* Sales by shipping mode
-* Profit by shipping mode
-
-### Discount Analysis
-
-Analyzed the relationship between discounts and profitability to identify areas where high discounts may affect profit.
-
----
-
-## 💡 Business Insights
-
-The SQL analysis helps answer important business questions such as:
-
-* Which regions generate the highest sales?
-* Which regions generate the highest profit?
-* Which products contribute the most revenue?
-* Which products have low or negative profitability?
-* Which categories perform best?
-* How does discounting affect profit?
-* Which shipping modes are used most frequently?
-* Which customers contribute significantly to sales?
-
-For example, the **Canon imageCLASS 2200 Advanced Copier** was identified as one of the highest-performing products, generating approximately **$61,599.83 in sales** and **$25,199.94 in profit**.
-
----
-
-## 💼 Business Impact
-
-This analysis can help a business:
-
-* Identify high-performing products and regions
-* Improve pricing and discount strategies
-* Focus on profitable products
-* Identify areas of low profitability
-* Understand customer purchasing behavior
-* Improve shipping and operational decisions
-* Support data-driven business decisions
-
----
-
-## 📂 Project Structure
+## 🔄 Project Workflow
 
 ```text
-Superstore-SQL-Analysis/
-│
-├── README.md
-└── superstore_analysis.sql
+Raw Dataset
+     ↓
+Data Preparation
+     ↓
+PostgreSQL Database
+     ↓
+SQL Analysis
+     ↓
+DAX Measures
+     ↓
+Power BI Dashboard
+     ↓
+Business Insights
 ```
 
 ---
 
-## 🎯 Project Objective
+# 🧹 Data Preparation
 
-The main objective of this project was to develop practical **SQL and data-analysis skills** by working with a real-world-style e-commerce dataset.
+The Superstore dataset was imported into PostgreSQL and prepared for analysis.
 
-The project demonstrates my ability to:
+The data preparation process included:
 
-* Work with PostgreSQL
-* Write SQL queries
-* Perform data-quality checks
-* Calculate business KPIs
-* Analyze sales and profitability
-* Extract business insights
-* Translate data into meaningful business information
-
----
-
-## 👨‍💻 Skills Demonstrated
-
-**SQL | PostgreSQL | Data Cleaning | Data Analysis | KPI Analysis | Business Insights | Data Quality Validation**
+* Importing the CSV dataset
+* Checking column names and data types
+* Handling date fields
+* Checking for duplicate records
+* Validating numerical fields
+* Checking sales and profit values
+* Preparing the dataset for SQL analysis and Power BI
 
 ---
 
-## 🚀 Future Improvements
+# 🧮 SQL Analysis
 
-Planned improvements include:
+SQL was used to analyze the dataset and calculate important business metrics.
 
-* Creating visual dashboards using **Power BI**
-* Adding SQL analysis screenshots
-* Adding more advanced SQL queries
-* Creating additional business recommendations
-* Connecting the project to my Data Analyst portfolio website
+### Example: Overall Business Performance
+
+```sql
+SELECT
+    SUM(sales) AS total_sales,
+    SUM(profit) AS total_profit,
+    COUNT(DISTINCT order_id) AS total_orders
+FROM superstore;
+```
+
+### SQL Analysis Included
+
+* Overall sales and profit
+* Total orders
+* Regional performance
+* Category performance
+* Sub-category performance
+* Product performance
+* Customer segment analysis
+* Shipping mode analysis
+* Profitability analysis
+
+---
+
+# 📐 DAX Measures
+
+The following DAX measures were created in Power BI.
+
+### Total Sales
+
+```DAX
+Total Sales = SUM(superstore[sales])
+```
+
+### Total Profit
+
+```DAX
+Total Profit = SUM(superstore[profit])
+```
+
+### Total Orders
+
+```DAX
+Total Orders = DISTINCTCOUNT(superstore[order_id])
+```
+
+### Total Quantity
+
+```DAX
+Total Quantity = SUM(superstore[quantity])
+```
+
+### Profit Margin
+
+```DAX
+Profit Margin = DIVIDE([Total Profit], [Total Sales], 0)
+```
+
+### Average Order Value
+
+```DAX
+Average Order Value = DIVIDE([Total Sales], [Total Orders], 0)
+```
+
+---
+
+# 📊 Power BI Dashboard
+
+The project contains **4 interactive dashboard pages**.
+
+## 1️⃣ Sales & Profit Dashboard
+
+**Purpose:** Analyze overall business performance.
+
+### KPIs
+
+* Total Sales
+* Total Orders
+* Total Profit
+* Profit Margin
+
+### Analysis
+
+* Sales and profit trends
+* Sales by category
+* Sales by product
+* Yearly sales performance
+* Interactive filtering by date, category, region, and segment
+
+---
+
+## 2️⃣ Product Performance Dashboard
+
+**Purpose:** Understand product, category, and sub-category performance.
+
+### KPIs
+
+* Total Sales
+* Total Profit
+* Total Quantity
+* Average Order Value
+
+### Analysis
+
+* Top 10 products by sales
+* Top 10 products by profit
+* Sales and profit by sub-category
+* Sales vs. profit by product
+* Category and sub-category filtering
+
+---
+
+## 3️⃣ Regional Performance Dashboard
+
+**Purpose:** Compare sales and profitability across different regions and states.
+
+### KPIs
+
+* Total Sales
+* Total Profit
+* Total Orders
+* Profit Margin
+
+### Analysis
+
+* Sales by region
+* Profit by region
+* Sales by state
+* Profit by state
+* Region and state filtering
+
+---
+
+## 4️⃣ Customer & Shipping Dashboard
+
+**Purpose:** Analyze customer segments and shipping performance.
+
+### KPIs
+
+* Total Sales
+* Total Profit
+* Total Orders
+* Average Order Value
+
+### Analysis
+
+* Sales by customer segment
+* Profit by customer segment
+* Sales by shipping mode
+* Orders by shipping mode
+
+---
+
+# 📈 Key Business Metrics
+
+| Metric        |    Value |
+| ------------- | -------: |
+| Total Sales   | ₹22.97 L |
+| Total Profit  |  ₹2.86 L |
+| Total Orders  |    5,009 |
+| Profit Margin |   12.47% |
+
+---
+
+# 💡 Key Business Insights
+
+* The business generated approximately **₹22.97 lakh in total sales** across **5,009 orders**.
+* Total profit was approximately **₹2.86 lakh**, giving an overall profit margin of **12.47%**.
+* Product-level analysis helps identify products contributing strongly to sales and profitability.
+* Regional analysis highlights differences in sales and profit performance across markets.
+* Customer segment analysis helps identify the major contributors to overall revenue.
+* Shipping analysis shows the distribution of orders and sales across different shipping methods.
+* Comparing sales with profit helps identify areas where high revenue does not necessarily result in high profitability.
+
+---
+
+# 📌 Business Recommendations
+
+Based on the analysis, the business can:
+
+* Focus on high-profit products and sub-categories.
+* Investigate products with high sales but comparatively low profit.
+* Review discount strategies where profitability is weak.
+* Focus on strong-performing regions while improving weaker markets.
+* Develop strategies to retain high-value customer segments.
+* Monitor shipping methods to balance customer service and operational efficiency.
+
+---
+
+# 🖥️ Dashboard Preview
+
+### Sales & Profit Dashboard
+
+![Sales & Profit Dashboard](screenshots/sales-profit-dashboard.png)
+
+### Product Performance Dashboard
+
+![Product Performance Dashboard](screenshots/product-performance.png)
+
+### Regional Performance Dashboard
+
+![Regional Performance Dashboard](screenshots/regional-performance.png)
+
+### Customer & Shipping Dashboard
+
+![Customer & Shipping Dashboard](screenshots/customer-shipping.png)
+
+---
+
+# 📁 Project Structure
+
+``text
+superstore-sales-analysis/
+│
+├── README.md
+│
+├── data/
+│   └── SampleSuperstore.csv
+│
+├── sql/
+│   └── superstore_analysis.sql
+│
+├── powerbi/
+│   └── Superstore_Sales_Analysis.pbix
+│
+├── screenshots/
+│   ├── sales-profit-dashboard.png
+│   ├── product-performance.png
+│   ├── regional-performance.png
+│   └── customer-shipping.png
+│
+└── documentation/
+    └── project-report.pdf
+```
+
+---
+
+# 🚀 How to Explore the Project
+
+1. Download the repository.
+2. Open the SQL file to review the analysis queries.
+3. Open the .pbix file using Power BI Desktop.
+4. Explore the four dashboard pages.
+5. Use the available slicers to interact with the data.
+6. Review the business insights and recommendations.
+
+---
+
+# 📚 Skills Demonstrated
+
+Through this project, I demonstrated practical knowledge of:
+
+* SQL
+* PostgreSQL
+* Data Cleaning
+* Data Analysis
+* DAX
+* Power BI
+* Data Visualization
+* KPI Development
+* Business Intelligence
+* Business Insights
+* GitHub Documentation
+
+---
+
+# 👨‍💻 Author
+
+**Navaneeth**
+
+B.Tech Computer Science & Engineering
+
+**Aspiring Data Analyst**
+
+Skills: SQL | Power BI | Excel | Python | Data Analysis
+
+---
+
+⭐ If you find this project useful, feel free to explore the repository and dashboard.
